@@ -457,7 +457,7 @@ app.post('/api/grade-test', async (req, res) => {
   }
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`[SERVER] English Platform Polyglot Engine active on port ${PORT}`);
 });
