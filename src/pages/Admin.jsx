@@ -327,18 +327,36 @@ const Admin = () => {
     if (!certRef.current) return;
     setLoading(true);
     try {
+       const width = certRef.current.offsetWidth;
+       const height = certRef.current.offsetHeight;
        const canvas = await html2canvas(certRef.current, {
           scale: 3,
           useCORS: true,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#ffffff',
+          width: width,
+          height: height,
+          scrollX: 0,
+          scrollY: 0,
+          onclone: (clonedDoc) => {
+             const clonedElem = clonedDoc.getElementById('cert-element');
+             if (clonedElem) {
+                clonedElem.style.position = 'fixed';
+                clonedElem.style.top = '0';
+                clonedElem.style.left = '0';
+                clonedElem.style.zIndex = '999999';
+                clonedElem.style.transform = 'none';
+                clonedElem.style.margin = '0';
+                clonedElem.style.boxShadow = 'none';
+             }
+          }
        });
        const imgData = canvas.toDataURL('image/png');
        const pdf = new jsPDF({
           orientation: 'landscape',
           unit: 'px',
-          format: [canvas.width, canvas.height]
+          format: [width, height]
        });
-       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+       pdf.addImage(imgData, 'PNG', 0, 0, width, height);
        pdf.save(`Certificate_${certForm.studentName.replace(/\s+/g, '_')}.pdf`);
        triggerToast('Export sequence completed.');
     } catch (error) {
@@ -743,11 +761,11 @@ const Admin = () => {
                 <div className="card-premium" style={{ padding: 'var(--p-card)', overflow: 'hidden' }}>
                    <h3 className="label-small" style={{ marginBottom: '32px' }}>LIVE PREVIEW</h3>
                    <div style={{ overflowX: 'auto', padding: '10px' }}>
-                      <div ref={certRef} style={{ minWidth: '600px', aspectRatio: '1.414', background: 'white', border: '20px solid var(--primary)', padding: '60px', position: 'relative', color: '#1a1a1a', boxShadow: 'var(--shadow-lg)' }}>
+                      <div ref={certRef} id="cert-element" style={{ width: '841px', height: '595px', background: 'white', border: '20px solid #8b5cf6', padding: '60px', position: 'relative', color: '#1a1a1a', boxSizing: 'border-box', boxShadow: 'var(--shadow-lg)' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
                          <img src="/assets/newlogo.png" style={{ width: '80px' }} alt="Logo" />
                          <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: '10px', fontWeight: '800', color: 'var(--primary)' }}>MISS MADINA ACADEMY</div>
+                            <div style={{ fontSize: '10px', fontWeight: '800', color: '#8b5cf6' }}>MISS MADINA ACADEMY</div>
                             <div style={{ fontSize: '8px', opacity: 0.5 }}>VERIFIED CREDENTIAL</div>
                          </div>
                       </div>
