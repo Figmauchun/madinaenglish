@@ -7,7 +7,10 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+if (API_BASE_URL && !API_BASE_URL.endsWith('/api')) {
+  API_BASE_URL = API_BASE_URL.replace(/\/$/, '') + '/api';
+}
 
 const IrregularVerbs = () => {
   const [verbs, setVerbs] = useState([]);

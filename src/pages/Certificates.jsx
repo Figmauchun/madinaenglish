@@ -5,7 +5,10 @@ import { Trophy, Download, Award, ShieldCheck, Star, Calendar, FileText, Loader2
 import { useTranslation } from 'react-i18next';
 import { useToast } from '../App';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+if (API_BASE_URL && !API_BASE_URL.endsWith('/api')) {
+  API_BASE_URL = API_BASE_URL.replace(/\/$/, '') + '/api';
+}
 
 const Certificates = () => {
   const { t } = useTranslation();

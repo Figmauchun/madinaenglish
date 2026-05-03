@@ -11,7 +11,10 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import { useToast } from '../App';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+if (API_BASE_URL && !API_BASE_URL.endsWith('/api')) {
+  API_BASE_URL = API_BASE_URL.replace(/\/$/, '') + '/api';
+}
 
 const Lessons = () => {
   const { t } = useTranslation();
