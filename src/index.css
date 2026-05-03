@@ -473,7 +473,7 @@ body {
   scrollbar-width: none;
 }
 
-@media (max-pointer: coarse) {
+@media (pointer: coarse) {
   .custom-cursor {
     display: none !important;
   }
