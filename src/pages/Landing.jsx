@@ -16,8 +16,7 @@ const Landing = () => {
   return (
     <div style={{ background: 'var(--bg-app)', color: 'var(--text-primary)', minHeight: '100vh', overflowX: 'hidden' }}>
       
-      {/* Premium Header */}
-      <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, background: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(32px)', zIndex: 1000, borderBottom: '1px solid var(--border-soft)' }} className="dark:bg-[#0f172a]/80">
+      <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, background: 'var(--bg-card)', opacity: 0.95, backdropFilter: 'blur(32px)', zIndex: 1000, borderBottom: '1px solid var(--border-soft)' }}>
          <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                <img src="/assets/newlogo.png" alt="Miss Madina" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />

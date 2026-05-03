@@ -507,7 +507,7 @@ const Admin = () => {
                          <>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', paddingBottom: '32px', borderBottom: '1px solid var(--border)' }}>
                                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                                  <div style={{ background: 'var(--text-primary)', color: 'white', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><HelpCircle size={24} /></div>
+                                  <div style={{ background: 'var(--primary)', color: 'white', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><HelpCircle size={24} /></div>
                                   <h2 style={{ fontSize: '20px', fontWeight: '900' }}>{selectedTest.title}</h2>
                                </div>
                                <div style={{ display: 'flex', gap: '12px' }}>
@@ -610,7 +610,7 @@ const Admin = () => {
                                   ))}
                                </div>
                             </div>
-                            <button onClick={handleAddQuestion} className="btn-premium" style={{ width: '100%', height: '56px', background: 'var(--text-primary)', marginTop: '24px' }}>
+                            <button onClick={handleAddQuestion} className="btn-premium" style={{ width: '100%', height: '56px', background: 'var(--primary)', marginTop: '24px' }}>
                                <Plus size={18} /> Add to Matrix
                             </button>
                          </div>
@@ -681,14 +681,14 @@ const Admin = () => {
                       <>
                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '40px', borderBottom: '1px solid var(--border)' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1 }}>
-                               <div style={{ background: 'var(--text-primary)', color: 'white', width: '56px', height: '56px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><BookOpen size={24} /></div>
+                               <div style={{ background: 'var(--primary)', color: 'white', width: '56px', height: '56px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><BookOpen size={24} /></div>
                                <h2 style={{ fontSize: '22px', fontWeight: '900', maxWidth: '600px', lineHeight: '1.3' }}>{selectedLesson.title}</h2>
                             </div>
                             <div style={{ display: 'flex', gap: '12px' }}>
                                <button disabled={loading} onClick={handleGenerateLesson} className="btn-secondary" style={{ height: '52px', padding: '0 20px', fontSize: '13px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '2px', opacity: loading ? 0.5 : 1 }}>
                                   <Sparkles size={16} /> <span>{loading ? 'Synthesizing...' : 'AI Synthesis'}</span>
                                </button>
-                               <button onClick={handleSaveLesson} className="btn-premium" style={{ height: '52px', padding: '0 24px', fontSize: '14px', background: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px', whiteSpace: 'nowrap' }}>
+                               <button onClick={handleSaveLesson} className="btn-premium" style={{ height: '52px', padding: '0 24px', fontSize: '14px', background: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '10px', whiteSpace: 'nowrap' }}>
                                   <Save size={18} /> <span>Save Module</span>
                                </button>
                             </div>

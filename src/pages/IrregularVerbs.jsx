@@ -45,7 +45,7 @@ const IrregularVerbs = () => {
   );
 
   return (
-    <div className="relative min-h-screen pt-44 pb-20 overflow-hidden bg-[var(--bg-main)]">
+    <div className="relative min-h-screen pt-44 pb-20 overflow-hidden" style={{ background: 'var(--bg-app)', color: 'var(--text-primary)' }}>
       <div className="container-max">
         <header className="mb-16">
           <button 

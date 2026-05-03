@@ -110,7 +110,7 @@ const Phrases = () => {
                   </div>
                   <button 
                     onClick={() => copyToClipboard(p.phrase, p._id)}
-                    style={{ background: 'var(--bg-main)', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer', color: 'var(--text-dim)' }}
+                    style={{ background: 'var(--bg-app)', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer', color: 'var(--text-dim)' }}
                   >
                     {copiedId === p._id ? <Check size={18} className="text-success" /> : <Copy size={18} />}
                   </button>
@@ -123,7 +123,7 @@ const Phrases = () => {
                   <p style={{ fontWeight: '600', color: 'var(--text-main)' }}>{p.meaning}</p>
                 </div>
 
-                <div style={{ background: 'var(--bg-main)', padding: '16px', borderRadius: '12px', marginBottom: '24px' }}>
+                <div style={{ background: 'var(--bg-app)', padding: '16px', borderRadius: '12px', marginBottom: '24px' }}>
                   <div style={{ fontSize: '11px', fontWeight: '900', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: '4px' }}>Translation</div>
                   <p style={{ fontWeight: '800', fontSize: '18px' }}>{p.translation.uz}</p>
                 </div>

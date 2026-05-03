@@ -41,7 +41,7 @@ const GrammarRules = () => {
   };
 
   return (
-    <div className="relative min-h-screen pt-44 pb-20 overflow-hidden bg-[var(--bg-main)]">
+    <div className="relative min-h-screen pt-44 pb-20 overflow-hidden" style={{ background: 'var(--bg-app)', color: 'var(--text-primary)' }}>
       <div className="container-max">
         <AnimatePresence mode="wait">
           {!activeRule ? (
@@ -79,7 +79,7 @@ const GrammarRules = () => {
                       className="premium-card p-10 flex flex-col group cursor-pointer border-t-4 border-amber-500/20 hover:border-amber-500 transition-all"
                     >
                       <div className="flex justify-between items-start mb-10">
-                         <div className="w-16 h-16 bg-[var(--bg-main)] rounded-2xl flex items-center justify-center border border-[var(--border)] group-hover:bg-amber-600 transition-all duration-500 shadow-inner">
+                         <div className="w-16 h-16 rounded-2xl flex items-center justify-center border border-[var(--border)] group-hover:bg-amber-600 transition-all duration-500 shadow-inner" style={{ backgroundColor: 'var(--bg-app)' }}>
                             <BookOpen className="text-[var(--text-dim)] group-hover:text-white" size={28} />
                          </div>
                          <div className="inline-flex items-center px-4 py-1.5 bg-amber-500/10 text-amber-500 border border-amber-500/20 rounded-full text-[10px] font-black uppercase tracking-widest">{rule.level}</div>

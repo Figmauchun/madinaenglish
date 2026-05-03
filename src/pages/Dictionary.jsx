@@ -236,7 +236,7 @@ const Dictionary = () => {
            <p style={{ fontSize: '13px', opacity: 0.8, lineHeight: '1.5', marginBottom: '20px' }}>
               {t('dictionary.tip_desc')}
            </p>
-           <button className="btn-secondary btn-small" style={{ background: 'white', color: 'var(--primary)', border: 'none', width: '100%', fontWeight: '800' }}>
+           <button className="btn-secondary btn-small" style={{ background: 'var(--bg-card)', color: 'var(--primary)', border: 'none', width: '100%', fontWeight: '800' }}>
               {t('dictionary.view_lessons')}
            </button>
         </div>
