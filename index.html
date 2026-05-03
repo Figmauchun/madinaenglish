@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./public/assets/newlogo.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#8b5cf6" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Miss Madina</title>
     <meta name="description" content="Miss Madina bilan ingliz tilini o'rganishning yangi darajasi. Sun'iy intellekt yordamida adaptiv darslar va testlar." />
@@ -17,6 +19,13 @@
             },
           },
         },
+      }
+    </script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => console.log('SW registration error:', err));
+        });
       }
     </script>
   </head>

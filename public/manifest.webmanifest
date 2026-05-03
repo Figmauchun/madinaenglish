@@ -1,0 +1,21 @@
+{
+  "short_name": "Miss Madina",
+  "name": "Miss Madina English Learning Platform",
+  "icons": [
+    {
+      "src": "/assets/newlogo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/newlogo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "display": "standalone",
+  "theme_color": "#8b5cf6",
+  "description": "Miss Madina - Ingliz tili o'rganish platformasi"
+}

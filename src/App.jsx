@@ -18,6 +18,7 @@ import {
   Globe,
   MoreVertical,
   ChevronRight,
+  Download,
   Shield,
   Bell,
   CheckCircle2,
@@ -254,6 +255,28 @@ const Header = ({ darkMode, setDarkMode, onMenuOpen }) => {
   const role = localStorage.getItem('role');
   const username = localStorage.getItem('username') || 'Guest';
   const [showLangs, setShowLangs] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setDeferredPrompt(null);
+      }
+    } else {
+      alert("Ilovani yuklash uchun brauzer menyusidan 'Add to Home screen' yoki 'Install' tugmasini bosing.");
+    }
+  };
 
   const languages = [
     { code: 'en', label: 'English', flag: '🇺🇸' },
@@ -274,6 +297,14 @@ const Header = ({ darkMode, setDarkMode, onMenuOpen }) => {
          </div>
 
          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <button 
+               onClick={handleInstallClick}
+               style={{ height: '44px', padding: '0 16px', borderRadius: '14px', background: 'var(--primary-soft)', border: '1px solid var(--primary-soft)', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', cursor: 'pointer', fontSize: '14px', fontWeight: '800', transition: '0.2s' }}
+            >
+               <Download size={18} />
+               <span className="hide-tablet">Ilovani yuklash</span>
+            </button>
+
             <div style={{ display: 'flex', background: 'var(--bg-card)', padding: '4px', borderRadius: '14px', border: '1px solid var(--border)' }}>
                <button 
                   onClick={() => setDarkMode(false)}
