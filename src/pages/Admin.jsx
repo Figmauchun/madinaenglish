@@ -367,6 +367,27 @@ const Admin = () => {
     }
   };
 
+  const handleUploadCert = async () => {
+     if (!certForm.studentName || !certForm.courseName) {
+        return triggerToast('Student name and program are required.', 'error');
+     }
+     setLoading(true);
+     try {
+        await axios.post(`${API_BASE_URL}/results`, {
+           studentName: certForm.studentName,
+           testName: certForm.courseName,
+           score: 100,
+           answers: []
+        });
+        triggerToast("Sertifikat sertifikatlar bo'limiga muvaffaqiyatli yuklandi!");
+     } catch (error) {
+        console.error(error);
+        triggerToast('Sertifikatni yuklashda xatolik.', 'error');
+     } finally {
+        setLoading(false);
+     }
+  };
+
   const StatCard = ({ icon, label, value, trend, color }) => (
     <motion.div whileHover={{ y: -5 }} className="card-premium" style={{ padding: '32px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
@@ -761,32 +782,32 @@ const Admin = () => {
                 <div className="card-premium" style={{ padding: 'var(--p-card)', overflow: 'hidden' }}>
                    <h3 className="label-small" style={{ marginBottom: '32px' }}>LIVE PREVIEW</h3>
                    <div style={{ overflowX: 'auto', padding: '10px' }}>
-                      <div ref={certRef} id="cert-element" style={{ width: '841px', height: '595px', background: 'white', border: '20px solid #8b5cf6', padding: '60px', position: 'relative', color: '#1a1a1a', boxSizing: 'border-box', boxShadow: 'var(--shadow-lg)' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-                         <img src="/assets/newlogo.png" style={{ width: '80px' }} alt="Logo" />
+                      <div ref={certRef} id="cert-element" style={{ width: '1122px', height: '793px', background: 'white', border: '20px solid #8b5cf6', padding: '80px', position: 'relative', color: '#1a1a1a', boxSizing: 'border-box', boxShadow: 'var(--shadow-lg)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '50px' }}>
+                         <img src="/assets/newlogo.png" style={{ width: '100px' }} alt="Logo" />
                          <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontSize: '10px', fontWeight: '800', color: '#8b5cf6' }}>MISS MADINA ACADEMY</div>
-                            <div style={{ fontSize: '8px', opacity: 0.5 }}>VERIFIED CREDENTIAL</div>
+                            <div style={{ fontSize: '12px', fontWeight: '800', color: '#8b5cf6' }}>MISS MADINA ACADEMY</div>
+                            <div style={{ fontSize: '10px', opacity: 0.5 }}>VERIFIED CREDENTIAL</div>
                          </div>
                       </div>
                       <div style={{ textAlign: 'center' }}>
-                         <h1 style={{ fontSize: '48px', fontWeight: '900', letterSpacing: '-0.04em', margin: '0' }}>CERTIFICATE</h1>
-                         <p style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.2em', opacity: 0.5, marginBottom: '60px' }}>OF EXCELLENCE & PROFICIENCY</p>
-                         <div style={{ marginBottom: '40px' }}>
-                            <p style={{ fontSize: '11px', fontWeight: '600', opacity: 0.4 }}>THIS IS TO OFFICIALLY RECOGNIZE</p>
-                            <h2 style={{ fontSize: '32px', fontWeight: '800', borderBottom: '2px solid #eee', display: 'inline-block', padding: '0 40px 10px' }}>{certForm.studentName || 'Student Name'}</h2>
+                         <h1 style={{ fontSize: '56px', fontWeight: '900', letterSpacing: '-0.04em', margin: '0' }}>CERTIFICATE</h1>
+                         <p style={{ fontSize: '14px', fontWeight: '700', letterSpacing: '0.2em', opacity: 0.5, marginBottom: '80px' }}>OF EXCELLENCE & PROFICIENCY</p>
+                         <div style={{ marginBottom: '50px' }}>
+                            <p style={{ fontSize: '13px', fontWeight: '600', opacity: 0.4 }}>THIS IS TO OFFICIALLY RECOGNIZE</p>
+                            <h2 style={{ fontSize: '38px', fontWeight: '800', borderBottom: '2px solid #eee', display: 'inline-block', padding: '0 40px 10px' }}>{certForm.studentName || 'Student Name'}</h2>
                          </div>
-                         <p style={{ fontSize: '14px', lineHeight: '1.6', maxWidth: '500px', margin: '0 auto 60px' }}>
+                         <p style={{ fontSize: '16px', lineHeight: '1.6', maxWidth: '700px', margin: '0 auto 80px' }}>
                             For successfully completing the <b>{certForm.courseName}</b> with a proficiency level rated as <b>{certForm.level}</b>.
                          </p>
-                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '40px' }}>
+                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '60px' }}>
                             <div style={{ textAlign: 'left' }}>
-                               <div style={{ fontSize: '10px', fontWeight: '800' }}>{certForm.date}</div>
-                               <div style={{ fontSize: '8px', opacity: 0.5 }}>ISSUE DATE</div>
+                               <div style={{ fontSize: '12px', fontWeight: '800' }}>{certForm.date}</div>
+                               <div style={{ fontSize: '10px', opacity: 0.5 }}>ISSUE DATE</div>
                             </div>
                             <div>
-                               <div style={{ fontFamily: "'Great Vibes', cursive", fontSize: '32px', borderBottom: '1px solid #000', marginBottom: '4px', paddingBottom: '0' }}>Miss Madina</div>
-                               <div style={{ fontSize: '8px', opacity: 0.5 }}>ACADEMY DIRECTOR</div>
+                               <div style={{ fontFamily: "'Great Vibes', cursive", fontSize: '38px', borderBottom: '1px solid #000', marginBottom: '4px', paddingBottom: '0' }}>Miss Madina</div>
+                               <div style={{ fontSize: '10px', opacity: 0.5 }}>ACADEMY DIRECTOR</div>
                             </div>
                          </div>
                        </div>
@@ -811,6 +832,10 @@ const Admin = () => {
                       <button disabled={loading} onClick={handleDownloadCert} className="btn-premium" style={{ height: '56px', marginTop: '24px' }}>
                          {loading ? <Loader2 className="animate-spin" /> : <Download size={18} />} 
                          {loading ? 'Generating PDF...' : 'Export Official PDF'}
+                      </button>
+                      <button disabled={loading} onClick={handleUploadCert} className="btn-secondary" style={{ height: '56px', marginTop: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                         {loading ? <Loader2 className="animate-spin" /> : <CheckCircle2 size={18} />} 
+                         {loading ? 'Saving...' : "Sertifikatlar bo'limiga yuklash"}
                       </button>
                    </div>
                 </div>
