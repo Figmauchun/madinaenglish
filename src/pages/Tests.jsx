@@ -321,7 +321,7 @@ const Tests = () => {
                       className="btn-secondary"
                       style={{ opacity: currentQuestion === 0 ? 0.3 : 1 }}
                     >
-                      {t('admin.cancel')}
+                      {t('tests.prev')}
                     </button>
                     
                     {currentQuestion === selectedTest.questions.length - 1 ? (

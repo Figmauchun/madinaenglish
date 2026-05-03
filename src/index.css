@@ -220,7 +220,7 @@ body {
 }
 
 .btn-secondary {
-  background: #ffffff;
+  background: var(--bg-card);
   color: var(--text-primary);
   border: 1px solid var(--border);
   padding: 0 24px;
@@ -252,7 +252,7 @@ body {
 }
 
 .auth-input {
-  background: #ffffff;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   padding: 16px 20px;
   border-radius: 12px;
